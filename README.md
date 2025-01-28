@@ -1,4 +1,4 @@
-#GreyBall FrontEnd Challenge
+# GreyBall FrontEnd Challenge
 
 The following is an e-commerce product listing page, 
 using redux, react, next.js, tailwind and jest for testing.
