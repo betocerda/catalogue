@@ -6,16 +6,6 @@ import { setProducts, setCurrentPage } from '@/store/features/productSlice'
 import ProductCard from '@/components/ProductCard'
 import Header from '@/components/Header'
 import SearchSort from '@/components/SearchSort'
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Product Listing',
-  description: 'Browse our complete collection of high-quality products. Filter, search, and find exactly what you need.',
-  openGraph: {
-    title: 'Product Listing - Product Store',
-    description: 'Browse our complete collection of high-quality products. Filter, search, and find exactly what you need.',
-  }
-}
 
 export default function ProductListing() {
   const dispatch = useAppDispatch()
