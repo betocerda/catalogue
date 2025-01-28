@@ -4,8 +4,11 @@ import { useInView } from 'react-intersection-observer'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { setProducts, setCurrentPage } from '@/store/features/productSlice'
 import ProductCard from '@/components/ProductCard'
-// To do: add header with current price total
-// * add cart function to ProductCard
+import Header from '@/components/Header'
+
+// To do: 
+// * add header with current price total - Done
+// * add cart function to ProductCard - Done
 // * add search and sorting
 
 export default function ProductListing() {
@@ -81,6 +84,7 @@ useEffect(() => {
 if (isLoading && currentPage === 1) {
   return (
     <div className="min-h-screen bg-blue-100 pt-20">
+      <Header />
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center">Loading products...</div>
       </main>
@@ -91,6 +95,7 @@ if (isLoading && currentPage === 1) {
 if (error) {
   return (
     <div className="min-h-screen bg-blue-100 pt-20">
+      <Header />
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center text-red-600">Error: {error}</div>
       </main>
@@ -104,6 +109,7 @@ const displayedProducts = Array.isArray(filteredProducts)
 
 return (
   <div className="min-h-screen bg-blue-100 pt-20">
+    <Header />
     <main className="max-w-7xl mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {displayedProducts.map((product) => (

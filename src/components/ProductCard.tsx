@@ -1,5 +1,6 @@
 import { StarIcon } from 'lucide-react'
-
+import { useAppDispatch } from '@/store/hooks'
+import { addToCart } from '@/store/features/cartSlice'
 
 // props for the product card component
 interface ProductProps {
@@ -7,14 +8,23 @@ interface ProductProps {
   title: string
   description: string
   price: number
-  rating: number
+  currency: string
   image: string
+  rating: number
 }
 
-export default function ProductCard({ id, title, description, price, rating, image }: ProductProps) {
+
+export default function ProductCard({ id, title, description, price, currency, image, rating }: ProductProps) {
+  const dispatch = useAppDispatch()
 
   const handleAddToCart = () => {
-    // logic for adding the product to cart goes here...
+    dispatch(addToCart({ 
+      id, 
+      title, 
+      price, 
+      currency,
+      quantity: 1 
+    }))
   }
 
   return (
@@ -60,7 +70,7 @@ export default function ProductCard({ id, title, description, price, rating, ima
           <span className="text-lg font-bold">
             ${price.toFixed(2)}
           </span>
-          {/* Card add to cart (To Do: create cart slice) */}
+          {/* Card add to cart */}
           <button
             onClick={handleAddToCart}
             className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
